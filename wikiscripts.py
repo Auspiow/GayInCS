@@ -19,6 +19,12 @@ LIMIT 300
 
 # --- 3. 发出请求 ---
 print("📡 正在从 Wikidata 获取数据...")
+
+proxies = {
+    "http": "http://127.0.0.1:7890",
+    "https": "http://127.0.0.1:7890",
+}
+
 r = requests.get(url, params={"format": "json", "query": query}, headers={"User-Agent": "Mozilla/5.0"})
 r.raise_for_status()
 data = r.json()
