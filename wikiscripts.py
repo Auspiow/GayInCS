@@ -19,7 +19,17 @@ SELECT ?person ?personLabel ?occupationLabel ?sex_or_genderLabel ?sexual_orienta
 LIMIT 300
 """
 
-r = requests.get(url, params={"format": "json", "query": query}, headers={"User-Agent": "Mozilla/5.0"})
+proxies = {
+    "http": "http://127.0.0.1:7890",
+    "https": "http://127.0.0.1:7890",
+}
+r = requests.get(
+    url,
+    params={"format": "json", "query": query},
+    headers={"User-Agent": "Mozilla/5.0"},
+    proxies=proxies,
+    timeout=30,
+)
 r.raise_for_status()
 data = r.json()
 
