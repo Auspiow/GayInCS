@@ -52,7 +52,10 @@ male_df = df[df["gender"].str.lower() == "male"].copy()
 # ========== 3️⃣ 从 Wikipedia 补全性取向 ==========
 print("🔍 正在从 Wikipedia 补充缺失的性取向信息...")
 
-wiki = wikipediaapi.Wikipedia("en")
+wiki = wikipediaapi.Wikipedia(
+    language='en',
+    user_agent='GayInCS-Research/1.0 (https://github.com/Auspiow/GayInCS; 1937552355@qq.com)'
+)
 keywords = [
     "gay", "lesbian", "bisexual", "queer",
     "transgender", "non-binary", "asexual", "pansexual", "homosexual"
